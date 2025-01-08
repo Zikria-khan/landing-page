@@ -11,7 +11,7 @@ const JobList = () => {
   // Fetch jobs from the backend API
   const fetchJobs = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/jobs");
+      const response = await fetch("https://landing-page-zqmo.vercel.app/api/jobs");
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
