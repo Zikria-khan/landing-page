@@ -37,7 +37,7 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
       });
     }
 
-    // Trigger the redirection with TrafficBack (can replace this with direct window.location.replace if needed)
+    // Trigger the redirection with simplified method
     trafficBackRedirect(redirectUrl);
   };
 

