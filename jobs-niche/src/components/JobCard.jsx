@@ -5,7 +5,6 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
   // Define the redirection URL based on the job card index
   const getRedirectionUrl = () => {
     const jobIndex = job.id; // Assuming the `id` is unique for each job card
-    
     switch (jobIndex) {
       case 1:
         return "https://www.indeed.com";
@@ -22,10 +21,24 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
     }
   };
 
-  // Handle redirection on job card click
+  // Handle redirection on job card click and track the click
   const handleJobCardClick = () => {
     const redirectUrl = getRedirectionUrl();
-    trafficBackRedirect(redirectUrl); // Trigger the redirection with TrafficBack functionality
+    
+    // Track job card click with Propush (You would need to adjust this based on Propush API)
+    if (window.propPush) {
+      window.propPush('track', 'jobClick', {
+        eventCategory: 'Job Card Click',
+        eventAction: 'Redirect to Job Site',
+        jobId: job.id,
+        jobTitle: job.title,
+        jobCompany: job.company,
+        destinationUrl: redirectUrl
+      });
+    }
+
+    // Trigger the redirection with TrafficBack functionality
+    trafficBackRedirect(redirectUrl); 
   };
 
   return (
@@ -54,20 +67,16 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
   );
 };
 
-// Function to truncate long job descriptions
 const truncateDescription = (description) => {
   if (!description) return "No description available.";
   return description.length > 300 ? description.substring(0, 300) + "..." : description;
 };
 
-// Function to render star ratings
 const renderStars = (rating) => {
   const stars = [];
   for (let i = 0; i < 5; i++) {
     stars.push(
-      <span key={i} className={i < rating ? "star filled" : "star"}>
-        ★
-      </span>
+      <span key={i} className={i < rating ? "star filled" : "star"}>★</span>
     );
   }
   return stars;
