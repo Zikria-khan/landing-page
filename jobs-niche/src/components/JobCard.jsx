@@ -17,7 +17,6 @@ const JobCard = ({ job, isExpanded, toggleDescription, getRedirectionUrl, trackJ
     }
   };
 
-  // Handle Play button click event (if needed for a different purpose)
   const handlePlayButtonClick = () => {
     const redirectionUrls = getRedirectionUrl(job.id);
     window.open(redirectionUrls[1], "_blank"); // Open the second URL (you can adjust this logic as needed)
