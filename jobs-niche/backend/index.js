@@ -17,7 +17,9 @@ app.use(bodyParser.json()); // Parse JSON body from requests
 
 const JOOBLE_API_URL = "https://jooble.org/api/";
 const JOOBLE_API_KEY = process.env.JOOBLE_API_KEY; // Store Jooble API key in a .env file
-
+app.get("/", async (req, res) => {
+  res.status(200).json({message:"succefful"})
+  })
 // Endpoint to fetch jobs from Jooble API
 app.get("/api/jobs", async (req, res) => {
   const { keywords = "it", location = "america" } = req.query;
