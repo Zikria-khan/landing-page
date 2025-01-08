@@ -42,6 +42,8 @@ const JobList = () => {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [expandedJobs, setExpandedJobs] = useState({}); // Tracks expanded descriptions
+  const [subscribed, setSubscribed] = useState(false); // Subscription state
+  const [showPopup, setShowPopup] = useState(true); // State to control subscription popup visibility
 
   // Fetch jobs from the backend API
   const fetchJobs = async () => {
@@ -63,6 +65,21 @@ const JobList = () => {
   useEffect(() => {
     fetchJobs();
   }, []);
+
+  // Handle subscription request for notifications
+  const handleSubscribe = async () => {
+    if ("Notification" in window) {
+      const permission = await Notification.requestPermission();
+      if (permission === "granted") {
+        setSubscribed(true);
+        new Notification("You're now subscribed to job notifications!");
+      } else {
+        alert("You denied the notification permission.");
+      }
+    } else {
+      alert("Your browser does not support notifications.");
+    }
+  };
 
   // Toggles the description's expanded state for a specific job
   const toggleDescription = (jobId) => {
@@ -93,6 +110,20 @@ const JobList = () => {
 
   return (
     <div className="job-list-container">
+      {/* Subscription Popup */}
+      {showPopup && !subscribed && (
+        <div className="subscription-popup">
+          <h3>Subscribe to Job Notifications</h3>
+          <p>Get updates for new job listings directly to your browser!</p>
+          <button onClick={handleSubscribe} className="subscribe-button">
+            Subscribe
+          </button>
+          <button onClick={() => setShowPopup(false)} className="close-popup">
+            Close
+          </button>
+        </div>
+      )}
+
       {/* Motivational Header Section */}
       <div className="job-list-header">
         <h2>Utilize this opportunity with these jobs, apply quickly!</h2>

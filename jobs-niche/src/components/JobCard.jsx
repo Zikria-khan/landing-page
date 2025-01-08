@@ -1,11 +1,10 @@
 import React from "react";
-import "./JobCard.css"; // CSS file for styling this component
+import "./JobCard.css";
 
 const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) => {
   // Define the redirection URL based on the job card index
   const getRedirectionUrl = () => {
-    // Define a list of predefined redirection URLs based on job index or specific conditions
-    const jobIndex = job.id; // Assuming the `id` is unique for each job card, can use index too
+    const jobIndex = job.id; // Assuming the `id` is unique for each job card
     
     switch (jobIndex) {
       case 1:
@@ -25,23 +24,16 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
 
   // Handle redirection on job card click
   const handleJobCardClick = () => {
-    const redirectUrl = getRedirectionUrl(); // Get the appropriate URL based on job index
+    const redirectUrl = getRedirectionUrl();
     trafficBackRedirect(redirectUrl); // Trigger the redirection with TrafficBack functionality
   };
 
   return (
-    <div className="job-card" onClick={handleJobCardClick}> {/* Trigger redirection when clicking the job card */}
-      {/* Job Title and Company */}
+    <div className="job-card" onClick={handleJobCardClick}>
       <h3 className="job-title">{job.title || "Job Title Unavailable"}</h3>
       <p className="company-name">{job.company || "Company Name Unavailable"}</p>
-
-      {/* Location */}
       <p className="job-location">{job.location || "Remote"}</p>
-
-      {/* Star Rating Display */}
       <div className="star-rating">{renderStars(job.rating || 0)}</div>
-
-      {/* Job Description with Toggle */}
       <p className="job-description">
         {isExpanded ? job.snippet : truncateDescription(job.snippet)}
         {job.snippet && job.snippet.length > 300 && (
@@ -53,8 +45,6 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
           </button>
         )}
       </p>
-
-      {/* Additional Info */}
       <div className="additional-info">
         <p className="date-posted">Updated: {new Date(job.updated).toLocaleDateString()}</p>
         <p className="employment-type">{job.type || "Employment type not specified"}</p>

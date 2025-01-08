@@ -120,3 +120,106 @@
   font-size: 1.2rem;
   color: #ff9999; /* Softer red for detailed error messages */
 }
+/* JobCard.css */
+.job-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-card:hover {
+  transform: scale(1.05);
+}
+
+.job-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.company-name {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.job-location {
+  font-size: 1rem;
+  color: #888;
+}
+
+.star-rating {
+  margin-top: 10px;
+}
+
+.star {
+  color: gold;
+}
+
+.star.filled {
+  color: #f5c000;
+}
+
+.job-description {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.toggle-description {
+  font-size: 0.9rem;
+  color: #007bff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.additional-info {
+  margin-top: 12px;
+  color: #555;
+}
+
+.date-posted {
+  font-size: 0.9rem;
+}
+
+.employment-type,
+.salary {
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* Subscription Popup Styles */
+.subscription-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.subscribe-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-popup {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
