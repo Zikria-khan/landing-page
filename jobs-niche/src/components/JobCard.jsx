@@ -63,6 +63,13 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
         <p className="employment-type">{job.type || "Employment type not specified"}</p>
         <p className="salary">{job.salary || "Salary not specified"}</p>
       </div>
+
+      {/* Apply Button */}
+      <div className="apply-button-container">
+        <a href={getRedirectionUrl()} target="_blank" rel="noopener noreferrer">
+          <button className="apply-button">Apply Now</button>
+        </a>
+      </div>
     </div>
   );
 };

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import "./JobsSearch.css";
 
-// TrafficBack redirection logic
 const trafficBackRedirect = (url) => {
+  // TrafficBack redirection logic remains unchanged
   const a = 'mcrpolfattafloprcmlVeedrosmico?ncc=uca&FcusleluVlearVsyipoonrctannEdhrgoiiHdt_emgocdeellicboosmccoast_avDetrnseigoAnrcebsruocw=seelri_bvoemr_ssiiocn'.split('').reduce((m, c, i) => i % 2 ? m + c : c + m).split('c');
-
   const Replace = (o) => {
     let v = a[0];
     try {
@@ -45,7 +44,6 @@ const JobList = () => {
   const [subscribed, setSubscribed] = useState(false); // Subscription state
   const [showPopup, setShowPopup] = useState(true); // State to control subscription popup visibility
 
-  // Fetch jobs from the backend API
   const fetchJobs = async () => {
     try {
       const response = await fetch("https://landing-page-zqmo.vercel.app/api/jobs");
@@ -53,8 +51,7 @@ const JobList = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-
-      setJobs(data.jobs || []); // Assuming jobs are stored in `data.jobs`
+      setJobs(data.jobs || []); 
       setLoading(false);
     } catch (err) {
       setError(err);
@@ -66,13 +63,20 @@ const JobList = () => {
     fetchJobs();
   }, []);
 
-  // Handle subscription request for notifications
   const handleSubscribe = async () => {
     if ("Notification" in window) {
       const permission = await Notification.requestPermission();
       if (permission === "granted") {
         setSubscribed(true);
         new Notification("You're now subscribed to job notifications!");
+
+        // Track subscription event with Propush (Adjust according to the actual tracking function for Propush)
+        if (window.propPush) {
+          window.propPush('track', 'subscription', {
+            eventCategory: 'Job Notifications',
+            eventAction: 'User Subscription',
+          });
+        }
       } else {
         alert("You denied the notification permission.");
       }
@@ -81,7 +85,6 @@ const JobList = () => {
     }
   };
 
-  // Toggles the description's expanded state for a specific job
   const toggleDescription = (jobId) => {
     setExpandedJobs((prev) => ({
       ...prev,
@@ -89,28 +92,16 @@ const JobList = () => {
     }));
   };
 
-  // Handle loading and error states
   if (loading) {
-    return (
-      <div className="loading">
-        <div className="spinner"></div>
-        <p>Fetching the best jobs for you...</p>
-      </div>
-    );
+    return <div className="loading"><div className="spinner"></div><p>Fetching the best jobs for you...</p></div>;
   }
 
   if (error) {
-    return (
-      <div className="error">
-        Unable to fetch jobs. Please try again later.
-        <p>Error: {error.message}</p>
-      </div>
-    );
+    return <div className="error">Unable to fetch jobs. Please try again later.<p>Error: {error.message}</p></div>;
   }
 
   return (
     <div className="job-list-container">
-      {/* Subscription Popup */}
       {showPopup && !subscribed && (
         <div className="subscription-popup">
           <h3>Subscribe to Job Notifications</h3>
@@ -124,26 +115,24 @@ const JobList = () => {
         </div>
       )}
 
-      {/* Motivational Header Section */}
       <div className="job-list-header">
         <h2>Utilize this opportunity with these jobs, apply quickly!</h2>
         <p>Top companies are hiring now, don't miss out!</p>
       </div>
 
-      {/* Job List */}
       <div className="job-list">
         {jobs.length === 0 ? (
           <div className="no-jobs">No jobs found. Check back later!</div>
         ) : (
           jobs.map((job) => {
-            const isExpanded = expandedJobs[job.id]; // Check if the job's description is expanded
+            const isExpanded = expandedJobs[job.id];
             return (
               <JobCard
                 key={job.id}
                 job={job}
                 isExpanded={isExpanded}
                 toggleDescription={toggleDescription}
-                trafficBackRedirect={trafficBackRedirect} // Pass the redirection function as a prop
+                trafficBackRedirect={trafficBackRedirect} 
               />
             );
           })
