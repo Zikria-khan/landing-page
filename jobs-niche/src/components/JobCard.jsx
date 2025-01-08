@@ -7,17 +7,17 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
     const jobIndex = job.id; // Assuming the `id` is unique for each job card
     switch (jobIndex) {
       case 1:
-        return "https://www.indeed.com";
+        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
       case 2:
-        return "https://www.adzuna.com";
+        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
       case 3:
-        return "https://www.linkedin.com/jobs";
+        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
       case 4:
-        return "https://www.glassdoor.com";
+        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
       case 5:
-        return "https://www.monster.com";
+        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
       default:
-        return job.link || "#"; // Fallback to job link if no specific URL is defined
+        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`; // Default redirection for any job
     }
   };
 
