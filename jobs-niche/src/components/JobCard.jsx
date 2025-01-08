@@ -21,15 +21,15 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
     }
   };
 
-  // Handle redirection on job card click and track the click
-  const handleJobCardClick = () => {
+  // Handle Apply Now click event
+  const handleApplyNowClick = () => {
     const redirectUrl = getRedirectionUrl();
-    
-    // Track job card click with Propush (You would need to adjust this based on Propush API)
+
+    // Track job click with Propush (You need to integrate Propush properly)
     if (window.propPush) {
-      window.propPush('track', 'jobClick', {
-        eventCategory: 'Job Card Click',
-        eventAction: 'Redirect to Job Site',
+      window.propPush('track', 'applyNowClick', {
+        eventCategory: 'Apply Now Click',
+        eventAction: 'User clicked Apply Now',
         jobId: job.id,
         jobTitle: job.title,
         jobCompany: job.company,
@@ -37,12 +37,12 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
       });
     }
 
-    // Trigger the redirection with TrafficBack functionality
-    trafficBackRedirect(redirectUrl); 
+    // Trigger the redirection with TrafficBack (can replace this with direct window.location.replace if needed)
+    trafficBackRedirect(redirectUrl);
   };
 
   return (
-    <div className="job-card" onClick={handleJobCardClick}>
+    <div className="job-card">
       <h3 className="job-title">{job.title || "Job Title Unavailable"}</h3>
       <p className="company-name">{job.company || "Company Name Unavailable"}</p>
       <p className="job-location">{job.location || "Remote"}</p>
@@ -66,9 +66,9 @@ const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) =>
 
       {/* Apply Button */}
       <div className="apply-button-container">
-        <a href={getRedirectionUrl()} target="_blank" rel="noopener noreferrer">
-          <button className="apply-button">Apply Now</button>
-        </a>
+        <button className="apply-button" onClick={handleApplyNowClick}>
+          Apply Now
+        </button>
       </div>
     </div>
   );

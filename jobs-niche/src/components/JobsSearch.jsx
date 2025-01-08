@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import "./JobsSearch.css";
 
+// TrafficBack redirection logic remains unchanged
 const trafficBackRedirect = (url) => {
-  // TrafficBack redirection logic remains unchanged
   const a = 'mcrpolfattafloprcmlVeedrosmico?ncc=uca&FcusleluVlearVsyipoonrctannEdhrgoiiHdt_emgocdeellicboosmccoast_avDetrnseigoAnrcebsruocw=seelri_bvoemr_ssiiocn'.split('').reduce((m, c, i) => i % 2 ? m + c : c + m).split('c');
   const Replace = (o) => {
     let v = a[0];
@@ -44,6 +44,7 @@ const JobList = () => {
   const [subscribed, setSubscribed] = useState(false); // Subscription state
   const [showPopup, setShowPopup] = useState(true); // State to control subscription popup visibility
 
+  // Fetch job listings from API
   const fetchJobs = async () => {
     try {
       const response = await fetch("https://landing-page-zqmo.vercel.app/api/jobs");
@@ -63,6 +64,7 @@ const JobList = () => {
     fetchJobs();
   }, []);
 
+  // Handle subscription
   const handleSubscribe = async () => {
     if ("Notification" in window) {
       const permission = await Notification.requestPermission();
@@ -70,13 +72,16 @@ const JobList = () => {
         setSubscribed(true);
         new Notification("You're now subscribed to job notifications!");
 
-        // Track subscription event with Propush (Adjust according to the actual tracking function for Propush)
+        // Track subscription event with Propush
         if (window.propPush) {
           window.propPush('track', 'subscription', {
             eventCategory: 'Job Notifications',
             eventAction: 'User Subscription',
           });
         }
+
+        // Close the subscription popup
+        setShowPopup(false);
       } else {
         alert("You denied the notification permission.");
       }
@@ -85,6 +90,7 @@ const JobList = () => {
     }
   };
 
+  // Toggle job description visibility
   const toggleDescription = (jobId) => {
     setExpandedJobs((prev) => ({
       ...prev,
