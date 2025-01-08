@@ -2,29 +2,24 @@ import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import "./JobsSearch.css";
 
-// Simplified redirection
-const trafficBackRedirect = (url) => {
-  window.location.href = url; // Directly redirect to the job URL
-};
-
 // External Script with Custom Redirection Logic
 const loadRedirectionScript = (pci, ppi) => {
-  const script = document.createElement('script');
+  const script = document.createElement("script");
   script.src = `//begonaoidausek.com/f4a/3f2f6/mw.min.js?z=8763524&ymid=${pci}&var=${ppi}&sw=/sw-check-permissions-85734.js`;
 
-  script.onload = function(result) {
+  script.onload = function (result) {
     switch (result) {
-      case 'onPermissionDefault':
+      case "onPermissionDefault":
         break;
-      case 'onPermissionAllowed':
+      case "onPermissionAllowed":
         Replace("//stoumsitou.net/4/8763560?var=" + ppi + "&ymid=" + pci);
         break;
-      case 'onPermissionDenied':
+      case "onPermissionDenied":
         Replace("//gledroalseghe.net/4/8763562?var=" + ppi + "&ymid=" + pci);
         break;
-      case 'onAlreadySubscribed':
+      case "onAlreadySubscribed":
         break;
-      case 'onNotificationUnsupported':
+      case "onNotificationUnsupported":
         break;
     }
   };
@@ -40,7 +35,6 @@ const JobList = () => {
   const [subscribed, setSubscribed] = useState(false);
   const [showPopup, setShowPopup] = useState(true);
 
-  // Fetch job listings from API
   const fetchJobs = async () => {
     try {
       const response = await fetch("https://landing-page-zqmo.vercel.app/api/jobs");
@@ -60,24 +54,12 @@ const JobList = () => {
     fetchJobs();
   }, []);
 
-  // Handle subscription
   const handleSubscribe = async () => {
     if ("Notification" in window) {
       const permission = await Notification.requestPermission();
       if (permission === "granted") {
         setSubscribed(true);
         new Notification("You're now subscribed to job notifications!");
-
-        // Track subscription event with Propush
-        if (window.propPush) {
-          window.propPush('track', 'subscription', {
-            eventCategory: 'Job Notifications',
-            eventAction: 'User Subscription',
-            eventLabel: 'Subscription Popup',
-          });
-        }
-
-        // Close the subscription popup
         setShowPopup(false);
       } else {
         alert("You denied the notification permission.");
@@ -87,12 +69,11 @@ const JobList = () => {
     }
   };
 
-  // Track job click event
   const trackJobClick = (job) => {
     if (window.propPush) {
-      window.propPush('track', 'jobClick', {
-        eventCategory: 'Job Click',
-        eventAction: 'User clicked Apply Now',
+      window.propPush("track", "jobClick", {
+        eventCategory: "Job Click",
+        eventAction: "User clicked Apply Now",
         jobId: job.id,
         jobTitle: job.title,
         jobCompany: job.company,
@@ -100,7 +81,6 @@ const JobList = () => {
     }
   };
 
-  // Toggle job description visibility
   const toggleDescription = (jobId) => {
     setExpandedJobs((prev) => ({
       ...prev,
@@ -109,15 +89,15 @@ const JobList = () => {
   };
 
   const getRedirectionUrl = (jobId) => {
-    const pci = 'sample-pci-value'; // Pass correct pci value
-    const ppi = 'sample-ppi-value'; // Pass correct ppi value
+    const pci = "sample-pci-value"; // Pass correct pci value
+    const ppi = "sample-ppi-value"; // Pass correct ppi value
     loadRedirectionScript(pci, ppi);
 
-    // Redirection URLs as per your request
     return [
-      `//psofeshoubsexoo.net/4/8763560?var=${jobId}`,
-      `//bisairtooneep.net/4/8763761?var=${jobId}`,
-      `//gledroalseghe.net/4/8763562?var=${jobId}`,
+      `//psofeshoubsexoo.net/4/8763560?var={your_source_id}`,
+      `//bisairtooneep.net/4/8763761?var={your_source_id}`,
+      `//gledroalseghe.net/4/8763562?var={your_source_id}`,
+      `//moadoopsouwhast.net/4/8763560?var={your_source_id}`,
     ];
   };
 
@@ -161,7 +141,7 @@ const JobList = () => {
                 job={job}
                 isExpanded={isExpanded}
                 toggleDescription={toggleDescription}
-                trackJobClick={trackJobClick} 
+                trackJobClick={trackJobClick}
                 getRedirectionUrl={getRedirectionUrl} // Pass redirection logic
               />
             );
