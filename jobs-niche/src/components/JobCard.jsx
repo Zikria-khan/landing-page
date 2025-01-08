@@ -1,9 +1,36 @@
 import React from "react";
 import "./JobCard.css"; // CSS file for styling this component
 
-const JobCard = ({ job, isExpanded, toggleDescription }) => {
+const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) => {
+  // Define the redirection URL based on the job card index
+  const getRedirectionUrl = () => {
+    // Define a list of predefined redirection URLs based on job index or specific conditions
+    const jobIndex = job.id; // Assuming the `id` is unique for each job card, can use index too
+    
+    switch (jobIndex) {
+      case 1:
+        return "https://www.indeed.com";
+      case 2:
+        return "https://www.adzuna.com";
+      case 3:
+        return "https://www.linkedin.com/jobs";
+      case 4:
+        return "https://www.glassdoor.com";
+      case 5:
+        return "https://www.monster.com";
+      default:
+        return job.link || "#"; // Fallback to job link if no specific URL is defined
+    }
+  };
+
+  // Handle redirection on job card click
+  const handleJobCardClick = () => {
+    const redirectUrl = getRedirectionUrl(); // Get the appropriate URL based on job index
+    trafficBackRedirect(redirectUrl); // Trigger the redirection with TrafficBack functionality
+  };
+
   return (
-    <div className="job-card">
+    <div className="job-card" onClick={handleJobCardClick}> {/* Trigger redirection when clicking the job card */}
       {/* Job Title and Company */}
       <h3 className="job-title">{job.title || "Job Title Unavailable"}</h3>
       <p className="company-name">{job.company || "Company Name Unavailable"}</p>
@@ -26,16 +53,6 @@ const JobCard = ({ job, isExpanded, toggleDescription }) => {
           </button>
         )}
       </p>
-
-      {/* Apply Link */}
-      <a
-        href={job.link || "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="apply-link"
-      >
-        Apply Now
-      </a>
 
       {/* Additional Info */}
       <div className="additional-info">

