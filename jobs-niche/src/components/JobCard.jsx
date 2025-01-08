@@ -2,14 +2,25 @@ import React from "react";
 import "./JobCard.css";
 
 const JobCard = ({ job, isExpanded, toggleDescription, getRedirectionUrl, trackJobClick }) => {
+  // Handle Apply Now click event to navigate to Jooble's job listing page
   const handleApplyNowClick = () => {
-    const redirectionUrls = getRedirectionUrl(job.id);
-    
-    // Track job click with Propush
+    const applyUrl = job.link; // Get the specific job URL from the job object (link property)
+
+    // Track job click with Propush (or any analytics tool)
     trackJobClick(job);
 
-    // Open a new tab with the redirection URLs (or choose one)
-    window.open(redirectionUrls[0], '_blank');  // Change index if you want a different link
+    // Open the job URL in a new tab
+    if (applyUrl) {
+      window.open(applyUrl, "_blank");
+    } else {
+      console.error("Apply URL not found for job:", job.id);
+    }
+  };
+
+  // Handle Play button click event (if needed for a different purpose)
+  const handlePlayButtonClick = () => {
+    const redirectionUrls = getRedirectionUrl(job.id);
+    window.open(redirectionUrls[1], "_blank"); // Open the second URL (you can adjust this logic as needed)
   };
 
   return (
@@ -35,6 +46,13 @@ const JobCard = ({ job, isExpanded, toggleDescription, getRedirectionUrl, trackJ
         <p className="salary">{job.salary || "Salary not specified"}</p>
       </div>
 
+      {/* Play Button */}
+      <div className="play-button-container">
+        <button className="play-button" onClick={handlePlayButtonClick}>
+          Play
+        </button>
+      </div>
+
       {/* Apply Button */}
       <div className="apply-button-container">
         <button className="apply-button" onClick={handleApplyNowClick}>
@@ -45,11 +63,13 @@ const JobCard = ({ job, isExpanded, toggleDescription, getRedirectionUrl, trackJ
   );
 };
 
+// Function to truncate job descriptions
 const truncateDescription = (description) => {
   if (!description) return "No description available.";
   return description.length > 300 ? description.substring(0, 300) + "..." : description;
 };
 
+// Function to render star ratings for the job
 const renderStars = (rating) => {
   const stars = [];
   for (let i = 0; i < 5; i++) {
