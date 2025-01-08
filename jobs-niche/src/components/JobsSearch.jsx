@@ -48,6 +48,7 @@ const JobList = () => {
           window.propPush('track', 'subscription', {
             eventCategory: 'Job Notifications',
             eventAction: 'User Subscription',
+            eventLabel: 'Subscription Popup',
           });
         }
 
@@ -58,6 +59,19 @@ const JobList = () => {
       }
     } else {
       alert("Your browser does not support notifications.");
+    }
+  };
+
+  // Track job click event
+  const trackJobClick = (job) => {
+    if (window.propPush) {
+      window.propPush('track', 'jobClick', {
+        eventCategory: 'Job Click',
+        eventAction: 'User clicked Apply Now',
+        jobId: job.id,
+        jobTitle: job.title,
+        jobCompany: job.company,
+      });
     }
   };
 
@@ -110,6 +124,7 @@ const JobList = () => {
                 isExpanded={isExpanded}
                 toggleDescription={toggleDescription}
                 trafficBackRedirect={trafficBackRedirect} 
+                trackJobClick={trackJobClick} // Pass the trackJobClick function to JobCard
               />
             );
           })

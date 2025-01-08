@@ -1,41 +1,19 @@
 import React from "react";
 import "./JobCard.css";
 
-const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect }) => {
+const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect, trackJobClick }) => {
   // Define the redirection URL based on the job card index
   const getRedirectionUrl = () => {
     const jobIndex = job.id; // Assuming the `id` is unique for each job card
-    switch (jobIndex) {
-      case 1:
-        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
-      case 2:
-        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
-      case 3:
-        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
-      case 4:
-        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
-      case 5:
-        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`;
-      default:
-        return `//dongaicmighauwa.net/4/8763562?var=${job.id}`; // Default redirection for any job
-    }
+    return `//gledroalseghe.net/4/8763562?var=${job.id}`; // Default redirection for any job
   };
 
   // Handle Apply Now click event
   const handleApplyNowClick = () => {
     const redirectUrl = getRedirectionUrl();
 
-    // Track job click with Propush (You need to integrate Propush properly)
-    if (window.propPush) {
-      window.propPush('track', 'applyNowClick', {
-        eventCategory: 'Apply Now Click',
-        eventAction: 'User clicked Apply Now',
-        jobId: job.id,
-        jobTitle: job.title,
-        jobCompany: job.company,
-        destinationUrl: redirectUrl
-      });
-    }
+    // Track job click with Propush
+    trackJobClick(job); // Call the trackJobClick function passed from the parent component
 
     // Trigger the redirection with simplified method
     trafficBackRedirect(redirectUrl);
