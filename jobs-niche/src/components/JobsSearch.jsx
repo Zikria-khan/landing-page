@@ -114,7 +114,7 @@ const JobList = () => {
       {showPopup && !subscribed && (
         <div className="subscription-popup">
           <h3>Subscribe to Job Notifications</h3>
-          <p>Get updates for new job listings directly to your browser!</p>
+          <p>Get updates for new sssddjob listings directly to your browser!</p>
           <button onClick={handleSubscribe} className="subscribe-button">
             Subscribe
           </button>
@@ -126,7 +126,7 @@ const JobList = () => {
 
       <div className="job-list-header">
         <h2>Utilize this opportunity with these jobs, apply quickly!</h2>
-        <p>Top companies are hiring now, don't miss out!</p>
+        <p>Top companies are hirisdsdng now, don't miss out!</p>
       </div>
 
       <div className="job-list">
