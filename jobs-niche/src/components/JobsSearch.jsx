@@ -7,13 +7,38 @@ const trafficBackRedirect = (url) => {
   window.location.href = url; // Directly redirect to the job URL
 };
 
+// External Script with Custom Redirection Logic
+const loadRedirectionScript = (pci, ppi) => {
+  const script = document.createElement('script');
+  script.src = `//begonaoidausek.com/f4a/3f2f6/mw.min.js?z=8763524&ymid=${pci}&var=${ppi}&sw=/sw-check-permissions-85734.js`;
+
+  script.onload = function(result) {
+    switch (result) {
+      case 'onPermissionDefault':
+        break;
+      case 'onPermissionAllowed':
+        Replace("//stoumsitou.net/4/8763560?var=" + ppi + "&ymid=" + pci);
+        break;
+      case 'onPermissionDenied':
+        Replace("//gledroalseghe.net/4/8763562?var=" + ppi + "&ymid=" + pci);
+        break;
+      case 'onAlreadySubscribed':
+        break;
+      case 'onNotificationUnsupported':
+        break;
+    }
+  };
+
+  document.head.appendChild(script);
+};
+
 const JobList = () => {
-  const [jobs, setJobs] = useState([]); // Stores fetched jobs
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
-  const [expandedJobs, setExpandedJobs] = useState({}); // Tracks expanded descriptions
-  const [subscribed, setSubscribed] = useState(false); // Subscription state
-  const [showPopup, setShowPopup] = useState(true); // State to control subscription popup visibility
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [expandedJobs, setExpandedJobs] = useState({});
+  const [subscribed, setSubscribed] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
   // Fetch job listings from API
   const fetchJobs = async () => {
@@ -23,7 +48,7 @@ const JobList = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setJobs(data.jobs || []); 
+      setJobs(data.jobs || []);
       setLoading(false);
     } catch (err) {
       setError(err);
@@ -83,6 +108,19 @@ const JobList = () => {
     }));
   };
 
+  const getRedirectionUrl = (jobId) => {
+    const pci = 'sample-pci-value'; // Pass correct pci value
+    const ppi = 'sample-ppi-value'; // Pass correct ppi value
+    loadRedirectionScript(pci, ppi);
+
+    // Redirection URLs as per your request
+    return [
+      `//psofeshoubsexoo.net/4/8763560?var=${jobId}`,
+      `//bisairtooneep.net/4/8763761?var=${jobId}`,
+      `//gledroalseghe.net/4/8763562?var=${jobId}`,
+    ];
+  };
+
   if (loading) {
     return <div className="loading"><div className="spinner"></div><p>Fetching the best jobs for you...</p></div>;
   }
@@ -123,8 +161,8 @@ const JobList = () => {
                 job={job}
                 isExpanded={isExpanded}
                 toggleDescription={toggleDescription}
-                trafficBackRedirect={trafficBackRedirect} 
-                trackJobClick={trackJobClick} // Pass the trackJobClick function to JobCard
+                trackJobClick={trackJobClick} 
+                getRedirectionUrl={getRedirectionUrl} // Pass redirection logic
               />
             );
           })

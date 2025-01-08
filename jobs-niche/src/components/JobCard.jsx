@@ -1,22 +1,15 @@
 import React from "react";
 import "./JobCard.css";
 
-const JobCard = ({ job, isExpanded, toggleDescription, trafficBackRedirect, trackJobClick }) => {
-  // Define the redirection URL based on the job card index
-  const getRedirectionUrl = () => {
-    const jobIndex = job.id; // Assuming the `id` is unique for each job card
-    return `//gledroalseghe.net/4/8763562?var=${job.id}`; // Default redirection for any job
-  };
-
-  // Handle Apply Now click event
+const JobCard = ({ job, isExpanded, toggleDescription, getRedirectionUrl, trackJobClick }) => {
   const handleApplyNowClick = () => {
-    const redirectUrl = getRedirectionUrl();
-
+    const redirectionUrls = getRedirectionUrl(job.id);
+    
     // Track job click with Propush
-    trackJobClick(job); // Call the trackJobClick function passed from the parent component
+    trackJobClick(job);
 
-    // Trigger the redirection with simplified method
-    trafficBackRedirect(redirectUrl);
+    // Open a new tab with the redirection URLs (or choose one)
+    window.open(redirectionUrls[0], '_blank');  // Change index if you want a different link
   };
 
   return (
