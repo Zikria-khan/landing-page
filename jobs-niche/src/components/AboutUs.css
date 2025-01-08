@@ -1,0 +1,44 @@
+/* About Section Styling */
+.about {
+  background-color: #3a3a3a; /* Dark background */
+  color: white;
+  border-radius: 10px;
+  padding: 3rem;
+  margin: 2rem;
+  text-align: center;
+  width: 95%;
+  max-width: 100%;
+  box-sizing: border-box;
+  animation: fadeInLeft 1s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about .section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.about .section-description {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-button {
+  padding: 1rem 2rem;
+  background-color: #444; /* Dark button background */
+  color: white;
+  border: 2px solid #ff5c8d;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.about-button:hover {
+  background-color: #ff5c8d;
+  color: white;
+  transform: translateY(-5px);
+}

@@ -1,0 +1,122 @@
+/* Main Container */
+.job-list-container {
+  background-color: #1b1b1b; /* Dark background for a modern look */
+  padding: 20px;
+  color: #e0e0e0; /* Light text for readability */
+}
+
+/* Job List Header Styling */
+.job-list-header {
+  background-color: #333; /* Dark, elegant background */
+  color: #ffcc00; /* Eye-catching gold text for contrast */
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Subtle light shadow */
+}
+
+.job-list-header h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.8); /* Glowing effect */
+}
+
+.job-list-header p {
+  font-size: 1.2rem;
+  margin: 0;
+  font-style: italic;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* Job List Styling */
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Loading and Error Messages */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffcc00; /* Gold for attention */
+  margin-top: 30px;
+}
+
+.no-jobs {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ccc; /* Subtle light gray for no-job text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .job-list-header {
+    padding: 15px;
+  }
+
+  .job-list-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .job-list-header p {
+    font-size: 1rem;
+  }
+}
+
+/* Loader Styling */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.loading p {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-top: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid rgba(255, 255, 255, 0.1); /* Subtle spinner background */
+  border-top-color: #ffcc00; /* Gold spinner for visibility */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Keyframes for Spinner Animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Styling */
+.error {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ff3333; /* Bright red for error messages */
+  margin-top: 30px;
+}
+
+.error p {
+  font-size: 1.2rem;
+  color: #ff9999; /* Softer red for detailed error messages */
+}

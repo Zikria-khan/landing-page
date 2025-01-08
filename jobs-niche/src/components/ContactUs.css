@@ -1,0 +1,121 @@
+/* General Styling for Contact Section */
+.contact {
+  background-color: #2c2c2c; /* Dark background */
+  color: #fff; /* White text for contrast */
+  padding: 50px 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Darker shadow */
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title Styling */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Description Styling */
+.section-description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  font-style: italic;
+  letter-spacing: 1px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Button Styling */
+.contact-button {
+  background-color: #4e4e4e; /* Dark button background */
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(255, 87, 51, 0.3);
+}
+
+.contact-button:hover {
+  background-color: #333333; /* Darker button on hover */
+  color: #ff5733; /* Button color transition */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 87, 51, 0.5);
+}
+
+.contact-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(255, 87, 51, 0.3);
+}
+
+/* Decorative Background Effect */
+.contact::before, .contact::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s infinite alternate ease-in-out;
+}
+
+.contact::before {
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+}
+
+.contact::after {
+  bottom: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact {
+    padding: 30px 15px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+
+  .contact-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}

@@ -1,0 +1,143 @@
+/* Job Card Styling */
+.job-card {
+    background-color: #2c2c2c; /* Dark background */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    color: #f1f1f1; /* Light text for contrast */
+  }
+  
+  .job-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Job Title and Company */
+  .job-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f1f1f1; /* Light title text */
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .job-title:hover {
+    color: #00bcd4; /* Teal hover effect for title */
+  }
+  
+  .company-name {
+    font-size: 1.1rem;
+    color: #b0b0b0; /* Lighter gray for company name */
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  /* Job Location */
+  .job-location {
+    font-size: 1rem;
+    color: #888; /* Darker gray for location */
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  
+  /* Star Rating */
+  .star-rating {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  
+  .star {
+    font-size: 1.2rem;
+    color: #b0b0b0; /* Light gray stars */
+  }
+  
+  .star.filled {
+    color: #ffdd00; /* Gold color for filled stars */
+  }
+  
+  /* Job Description */
+  .job-description {
+    font-size: 1rem;
+    color: #d1d1d1; /* Lighter gray for description text */
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .toggle-description {
+    background-color: #00bcd4; /* Teal button color */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-description:hover {
+    background-color: #0097a7; /* Darker teal hover effect */
+  }
+  
+  /* Apply Link */
+  .apply-link {
+    display: inline-block;
+    background-color: #00bcd4; /* Teal button for apply link */
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apply-link:hover {
+    background-color: #0097a7; /* Darker teal hover effect */
+  }
+  
+  /* Additional Info */
+  .additional-info {
+    font-size: 0.9rem;
+    color: #bbb; /* Light gray for additional info */
+    margin-top: 15px;
+  }
+  
+  .additional-info p {
+    margin: 5px 0;
+  }
+  
+  /* Media Queries for Mobile Devices */
+  @media (max-width: 768px) {
+    .job-card {
+      max-width: 90%;
+    }
+  
+    .job-title {
+      font-size: 1.3rem;
+    }
+  
+    .company-name {
+      font-size: 1rem;
+    }
+  
+    .job-location {
+      font-size: 0.9rem;
+    }
+  
+    .star-rating {
+      font-size: 1rem;
+    }
+  
+    .toggle-description {
+      padding: 6px 12px;
+    }
+  
+    .apply-link {
+      padding: 8px 16px;
+    }
+  }
+  
