@@ -1,206 +1,256 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Body and App Wrapper */
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  .app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  main {
-    flex-grow: 1;
-  }
-  
-  /* Header Styling */
-  header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and App Wrapper */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  line-height: 1.6;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* Header Styling */
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+header nav {
+  margin-top: 15px;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #222;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 50px;
+}
+
+footer p {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* About Us Section */
+.about-us {
+  background-color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  border-radius: 8px;
+  max-width: 1200px;
+}
+
+.about-us h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-us p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* Contact Us Section */
+.contact-us {
+  background-color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  border-radius: 8px;
+  max-width: 800px;
+}
+
+.contact-us h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.contact-us form input,
+.contact-us form textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-us form button {
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact-us form button:hover {
+  background-color: #0056b3;
+}
+
+/* Job List Styling */
+.job-list {
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.job-list h2 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.job-list ul {
+  list-style: none;
+}
+
+.job-list ul li {
+  background-color: #fafafa;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-list ul li .job-title {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.job-list ul li .job-location {
+  font-size: 1rem;
+  color: #555;
+}
+
+.job-list ul li .job-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.job-list ul li .job-link a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
   header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2.2rem;
   }
-  
-  header nav {
-    margin-top: 15px;
-  }
-  
+
   header nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 20px;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-  
-  header nav a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Footer Styling */
-  footer {
-    background-color: #222;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  footer p {
-    font-size: 0.9rem;
-    color: #ddd;
-  }
-  
-  /* About Us Section */
-  .about-us {
-    background-color: #fff;
-    padding: 50px 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    border-radius: 8px;
-    max-width: 1200px;
-  }
-  
-  .about-us h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .about-us p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 20px;
-    line-height: 1.7;
-  }
-  
-  /* Contact Us Section */
-  .contact-us {
-    background-color: #fff;
-    padding: 50px 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    border-radius: 8px;
-    max-width: 800px;
-  }
-  
-  .contact-us h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .contact-us form input,
-  .contact-us form textarea {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 1rem;
   }
-  
-  .contact-us form button {
-    padding: 15px 30px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .contact-us form button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Job List Styling */
+
+  .about-us,
+  .contact-us,
   .job-list {
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px auto;
-    max-width: 1200px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    margin: 20px;
+    padding: 30px;
   }
-  
-  .job-list h2 {
-    font-size: 2rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .job-list ul {
-    list-style: none;
-  }
-  
+
   .job-list ul li {
-    background-color: #fafafa;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .job-list ul li .job-title {
-    font-size: 1.2rem;
-    color: #333;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
   }
-  
-  .job-list ul li .job-location {
+
+  header nav a {
+    font-size: 0.9rem;
+  }
+
+  .about-us,
+  .contact-us,
+  .job-list {
+    margin: 15px;
+    padding: 20px;
+  }
+
+  .contact-us form button {
+    padding: 10px 20px;
     font-size: 1rem;
-    color: #555;
   }
-  
-  .job-list ul li .job-link a {
-    color: #007bff;
-    text-decoration: none;
+
+  .job-list ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
   }
-  
-  .job-list ul li .job-link a:hover {
-    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
   }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-  
-    header nav a {
-      font-size: 0.9rem;
-    }
-  
-    .about-us,
-    .contact-us,
-    .job-list {
-      margin: 20px;
-      padding: 30px;
-    }
-  
-    .job-list ul li {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+
+  header nav a {
+    font-size: 0.8rem;
   }
-  
+
+  .about-us h2,
+  .contact-us h2,
+  .job-list h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-us p,
+  .contact-us form input,
+  .contact-us form textarea,
+  .contact-us form button {
+    font-size: 1rem;
+  }
+}
