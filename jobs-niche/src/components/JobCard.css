@@ -20,18 +20,18 @@
 .job-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #f1f1f1; /* Consistent dark white */
+  color: #f1f1f1;
   margin-bottom: 10px;
   transition: color 0.3s ease;
 }
 
 .job-title:hover {
-  color: #00bcd4; /* Teal hover effect for title */
+  color: #00bcd4; /* Teal hover effect */
 }
 
 .company-name {
   font-size: 1.1rem;
-  color: #d1d1d1; /* Slightly lighter gray for company name */
+  color: #d1d1d1;
   margin-bottom: 10px;
   font-weight: 500;
 }
@@ -39,7 +39,7 @@
 /* Job Location */
 .job-location {
   font-size: 1rem;
-  color: #d1d1d1; /* Dark white for location */
+  color: #d1d1d1;
   margin-bottom: 20px;
   font-style: italic;
 }
@@ -52,7 +52,7 @@
 
 .star {
   font-size: 1.2rem;
-  color: #b0b0b0; /* Light gray stars */
+  color: #b0b0b0;
 }
 
 .star.filled {
@@ -62,13 +62,13 @@
 /* Job Description */
 .job-description {
   font-size: 1rem;
-  color: #f1f1f1; /* Dark white for description text */
+  color: #f1f1f1;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
 .toggle-description {
-  background-color: #00bcd4; /* Teal button color */
+  background-color: #00bcd4;
   color: #fff;
   border: none;
   padding: 8px 15px;
@@ -85,8 +85,8 @@
 
 /* Apply Button */
 .apply-button {
-  background-color: #007bff; /* Primary blue color */
-  color: #f1f1f1; /* Dark white text */
+  background-color: #007bff; /* Default primary blue color */
+  color: #f1f1f1;
   font-size: 16px;
   font-weight: bold;
   padding: 12px 20px;
@@ -98,14 +98,27 @@
 }
 
 .apply-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-2px); /* Slight lift on hover */
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Apply button for different job types */
+.apply-button.full-time {
+  background-color: #4CAF50;  /* Green for Full-time */
+}
+
+.apply-button.part-time {
+  background-color: #ff9800;  /* Orange for Part-time */
+}
+
+.apply-button.contract {
+  background-color: #f44336;  /* Red for Contract */
 }
 
 /* Additional Info */
 .additional-info {
   font-size: 0.9rem;
-  color: #d1d1d1; /* Light gray for additional info */
+  color: #d1d1d1;
   margin-top: 15px;
 }
 
